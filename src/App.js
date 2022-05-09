@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import AddBook from "./componentes/AddBook";
+import ListBook from "./componentes/ListBook";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './estilo.css';
+import { useState } from "react";
 
 function App() {
+
+  const [livroId,setLivroId] = useState('');
+
+  const handlerLivro = (id) =>{
+    console.log(id);
+    setLivroId(id);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="container mt-3">
+        <div className="row">
+          <div className="">
+            <AddBook codigoLivro={livroId}  setCodigoLivro={setLivroId}/>
+          </div>
+          <div className="">
+            <ListBook recuperaLivro={handlerLivro}/>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
